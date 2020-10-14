@@ -7,7 +7,10 @@
     "build": "blitz build",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest --runTestsByPath app/**/*.test.ts*",
-    "test:watch": "jest --watch"
+    "test:start": "blitz db migrate && blitz start --production -p 3000",
+    "test:ci": "cross-env NODE_ENV=test start-server-and-test test:start http://localhost:3000 cy:run",
+    "test:watch": "jest --watch",
+    "cy:run": "cypress run"
   },
   "browserslist": [
     "defaults"
@@ -34,6 +37,7 @@
     "@prisma/cli": "2.9.0",
     "@prisma/client": "2.9.0",
     "blitz": "0.24.2",
+    "cypress": "5.3.0",
     "final-form": "4.20.1",
     "react": "0.0.0-experimental-7f28234f8",
     "react-dom": "0.0.0-experimental-7f28234f8",

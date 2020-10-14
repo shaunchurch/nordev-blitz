@@ -7,7 +7,7 @@ import { render } from "test/utils"
 // jest.mock("app/hooks/useCurrentUser")
 // const mockUseCurrentUser = useCurrentUser as jest.MockedFunction<typeof useCurrentUser>
 
-test("expect true to be true", () => {
+test.skip("expect true to be true", () => {
   // This is an example of how to ensure a specific item is in the document
   // But it's disabled by default (by test.skip) so the test doesn't fail
   // when you remove the the default content from the page
@@ -21,5 +21,5 @@ test("expect true to be true", () => {
   // const { getByText } = render(<Home />)
   // const linkElement = getByText(/Documentation/i)
   // expect(linkElement).toBeInTheDocument()
-  expect(true).toBe(true)
+  // expect(true).toBe(true)
 })
