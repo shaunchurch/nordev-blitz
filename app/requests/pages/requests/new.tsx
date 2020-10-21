@@ -18,7 +18,7 @@ const NewRequestPage: BlitzPage = () => {
           try {
             const request = await createRequestMutation({
               data: {
-                title: values.title,
+                ...values,
                 product: {
                   connect: {
                     id: 1,

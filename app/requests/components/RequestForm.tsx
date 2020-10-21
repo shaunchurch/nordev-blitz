@@ -29,6 +29,7 @@ const RequestForm = ({ initialValues, onSubmit }: RequestFormProps) => {
       }}
     >
       <LabeledTextField name="title" label="Title" placeholder="Title" />
+      <LabeledTextField name="description" label="Description" placeholder="Description" />
     </Form>
   )
 }
