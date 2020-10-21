@@ -9,7 +9,11 @@ export default async function getProduct({ where }: GetProductInput, ctx: Ctx) {
   const product = await db.product.findFirst({
     where,
     include: {
-      requests: true,
+      requests: {
+        include: {
+          votesOnRequest: true,
+        },
+      },
     },
   })
 
