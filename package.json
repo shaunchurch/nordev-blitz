@@ -23,7 +23,7 @@
     "printWidth": 100
   },
   "husky": {
-    "hooks": {
+    "disabled-hooks": {
       "pre-commit": "tsc && lint-staged && pretty-quick --staged",
       "pre-push": "npm run lint && npm run test"
     }
