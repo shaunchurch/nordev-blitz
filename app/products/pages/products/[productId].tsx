@@ -1,6 +1,7 @@
 import React, { Suspense } from "react"
 import Layout from "app/layouts/Layout"
 import { Link, useRouter, useQuery, useParam, BlitzPage, useMutation } from "blitz"
+import classNames from "classnames"
 import getProduct from "app/products/queries/getProduct"
 import deleteProduct from "app/products/mutations/deleteProduct"
 import voteOnRequest from "app/requests/mutations/voteOnRequest"
@@ -17,13 +18,10 @@ export const Product = () => {
 
   return (
     <div>
-      <h1>Product {product.id}</h1>
-
-      {/* <pre>{JSON.stringify(product, null, 2)}</pre> */}
       <header className="flex flex-row mb-4 items-center">
-        <h2 className="text-base uppercase tracking-wider leading-tight font-semibold text-gray-600">
+        <h1 className="text-base uppercase tracking-wider leading-tight font-semibold text-gray-600">
           Feature Requests
-        </h2>
+        </h1>
         <span className="ml-auto">
           <Link href="/requests/new">
             <a className="bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded text-white font-bold">
@@ -63,9 +61,13 @@ export const Product = () => {
                       console.error(e)
                     }
                   }}
-                  className="flex flex-col space-y-4 p-3 rounded shadow-sm hover:bg-yellow-200"
+                  className={classNames(
+                    `flex flex-col space-y-4 p-3 rounded shadow-sm hover:bg-yellow-200`,
+                    {
+                      "bg-blue-200": hasVoted,
+                    }
+                  )}
                 >
-                  {hasVoted ? "Voted" : "NotVoted"}
                   <span>{request.votesOnRequest.length}</span> <span>Vote</span>
                 </button>
               </div>
@@ -99,17 +101,9 @@ export const Product = () => {
 
 const ShowProductPage: BlitzPage = () => {
   return (
-    <div>
-      <p>
-        <Link href="/products">
-          <a>Products</a>
-        </Link>
-      </p>
-
-      <Suspense fallback={<div>Loading...</div>}>
-        <Product />
-      </Suspense>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Product />
+    </Suspense>
   )
 }
 
