@@ -23,7 +23,7 @@ export const RequestsList = () => {
         {requests.map((request) => (
           <li key={request.id}>
             <Link href="/requests/[requestId]" as={`/requests/${request.id}`}>
-              <a>{request.name}</a>
+              <a>{request.title}</a>
             </Link>
           </li>
         ))}
