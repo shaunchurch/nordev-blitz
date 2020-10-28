@@ -1,0 +1,73 @@
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// --------------------------------------
+
+model User {
+  id              Int               @id @default(autoincrement())
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  name            String?
+  email           String            @unique
+  hashedPassword  String?
+  role            String            @default("user")
+  sessions        Session[]
+  products        Product[]
+  requests        Request[]
+  votesOnRequests VotesOnRequests[]
+}
+
+model Session {
+  id                 Int       @id @default(autoincrement())
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  expiresAt          DateTime?
+  handle             String    @unique
+  user               User?     @relation(fields: [userId], references: [id])
+  userId             Int?
+  hashedSessionToken String?
+  antiCSRFToken      String?
+  publicData         String?
+  privateData        String?
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  name        String
+  description String?
+  user        User?     @relation(fields: [userId], references: [id])
+  userId      Int?
+  requests    Request[]
+}
+
+model Request {
+  id             Int               @id @default(autoincrement())
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  title          String
+  description    String?
+  product        Product           @relation(fields: [productId], references: [id])
+  productId      Int
+  user           User?             @relation(fields: [userId], references: [id])
+  userId         Int?
+  votesOnRequest VotesOnRequests[]
+}
+
+model VotesOnRequests {
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  request   Request  @relation(fields: [requestId], references: [id])
+  requestId Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+
+  @@id([requestId, userId])
+}
