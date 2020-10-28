@@ -24,7 +24,7 @@ export const EditProduct = () => {
               where: { id: product.id },
               data: { name: "MyNewName" },
             })
-            await mutate(updated)
+            // await mutate(updated)
             alert("Success!" + JSON.stringify(updated))
             router.push("/products/[productId]", `/products/${updated.id}`)
           } catch (error) {
