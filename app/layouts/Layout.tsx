@@ -30,9 +30,11 @@ const Layout = ({ title, children }: LayoutProps) => {
               <a>Features List</a>
             </Link>
           </nav> */}
-          <Suspense fallback="Loading...">
-            <UserInfo />
-          </Suspense>
+          <div className="ml-auto">
+            <Suspense fallback="Loading...">
+              <UserInfo />
+            </Suspense>
+          </div>
         </header>
         {children}
       </div>

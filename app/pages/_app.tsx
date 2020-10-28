@@ -4,9 +4,11 @@ import { queryCache } from "react-query"
 import LoginForm from "app/auth/components/LoginForm"
 
 import "app/styles/index.css"
+import Layout from "app/layouts/Layout"
 
 export default function App({ Component, pageProps }: AppProps) {
-  const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || ((page) => <Layout title="Home">{page}</Layout>)
+
   const router = useRouter()
 
   return (

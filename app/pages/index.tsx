@@ -43,6 +43,6 @@ const Home: BlitzPage = () => {
   )
 }
 
-Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
+// Home.getLayout = (page) => <Layout title="Home">{page}</Layout>
 
 export default Home

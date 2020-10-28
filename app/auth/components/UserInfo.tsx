@@ -23,7 +23,7 @@ const UserInfo = () => {
     )
   } else {
     return (
-      <>
+      <div className="flex flex-row space-x-4 justify-center items-center mt-4">
         <Link href="/signup">
           <a className="button small">
             <strong>Sign Up</strong>
@@ -34,7 +34,7 @@ const UserInfo = () => {
             <strong>Login</strong>
           </a>
         </Link>
-      </>
+      </div>
     )
   }
 }
