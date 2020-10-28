@@ -22,7 +22,7 @@ export const EditRequest = () => {
           try {
             const updated = await updateRequestMutation({
               where: { id: request.id },
-              data: { name: "MyNewName" },
+              data: { title: "MyNewName" },
             })
             await mutate(updated)
             alert("Success!" + JSON.stringify(updated))
