@@ -9,18 +9,16 @@ const UserInfo = () => {
     return (
       <>
         <button
-          className="button small"
+          className="button small ml-auto"
           onClick={async () => {
             await logoutMutation()
           }}
         >
           Logout
         </button>
-        <div>
+        {/* <div>
           User id: <code>{currentUser.id}</code>
-          <br />
-          User role: <code>{currentUser.role}</code>
-        </div>
+        </div> */}
       </>
     )
   } else {
