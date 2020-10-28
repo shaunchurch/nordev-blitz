@@ -25,11 +25,11 @@ const Layout = ({ title, children }: LayoutProps) => {
             </a>
           </Link>
 
-          <nav className="ml-auto flex flex-row items-center space-x-4">
+          {/* <nav className="ml-auto flex flex-row items-center space-x-4">
             <Link href="/products/1">
               <a>Features List</a>
             </Link>
-          </nav>
+          </nav> */}
           <Suspense fallback="Loading...">
             <UserInfo />
           </Suspense>
