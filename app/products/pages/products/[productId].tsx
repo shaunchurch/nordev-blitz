@@ -42,7 +42,7 @@ export const Product = () => {
                 <button
                   onClick={async () => {
                     try {
-                      await voteOnRequestMutation({
+                      const res = await voteOnRequestMutation({
                         data: {
                           request: {
                             connect: {
@@ -56,8 +56,10 @@ export const Product = () => {
                           },
                         },
                       })
+
                       refetch()
                     } catch (e) {
+                      alert(e.message)
                       console.error(e)
                     }
                   }}
@@ -80,7 +82,7 @@ export const Product = () => {
         })}
       </ul>
 
-      <Link href="/products/[productId]/edit" as={`/products/${product.id}/edit`}>
+      {/* <Link href="/products/[productId]/edit" as={`/products/${product.id}/edit`}>
         <a>Edit</a>
       </Link>
 
@@ -94,7 +96,7 @@ export const Product = () => {
         }}
       >
         Delete
-      </button>
+      </button> */}
     </div>
   )
 }
